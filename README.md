@@ -1,1 +1,1 @@
-# QA_Automation_framework
+# QA_Automation_pet_project
