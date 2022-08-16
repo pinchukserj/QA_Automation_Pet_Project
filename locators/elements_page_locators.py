@@ -50,7 +50,12 @@ class WebTablePageLocators:
     INPUT_SEARCH = (By.CSS_SELECTOR, "input[id='searchBox']")
     DELETE_BUTTON = (By.CSS_SELECTOR, "span[title='Delete']")
     ROW_PARENT = ".//ancestor::div[@class='rt-tr-group']"
+    NO_ROWS_FOUND = (By.CSS_SELECTOR, "div[class='rt-noData']")
 
     # Update
 
     UPDATE_BUTTON = (By.CSS_SELECTOR, "span[title='Edit']")
+
+    # count
+
+    COUNTER_CHANGE = (By.CSS_SELECTOR, 'select[aria-label="rows per page"]')
