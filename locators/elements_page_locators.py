@@ -59,3 +59,17 @@ class WebTablePageLocators:
     # count
 
     COUNTER_CHANGE = (By.CSS_SELECTOR, 'select[aria-label="rows per page"]')
+
+
+class ButtonsPageLocators:
+    DOUBLE_BUTTON = (By.CSS_SELECTOR, 'button[id="doubleClickBtn"]')
+    RIGHT_CLICK_BUTTON = (By.CSS_SELECTOR, 'button[id="rightClickBtn"]')
+    CLICK_ME_BUTTON = (By.XPATH, "//div[3]/button")
+
+    #success message
+
+    SUCCESS_DOUBLE = (By.CSS_SELECTOR, 'p[id="doubleClickMessage"]')
+    SUCCESS_RIGHT = (By.CSS_SELECTOR, 'p[id="rightClickMessage"]')
+    SUCCESS_CLICK_ME = (By.CSS_SELECTOR, 'p[id="dynamicClickMessage"]')
+
+
