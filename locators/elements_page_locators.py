@@ -66,7 +66,7 @@ class ButtonsPageLocators:
     RIGHT_CLICK_BUTTON = (By.CSS_SELECTOR, 'button[id="rightClickBtn"]')
     CLICK_ME_BUTTON = (By.XPATH, "//div[3]/button")
 
-    #success message
+    # success message
 
     SUCCESS_DOUBLE = (By.CSS_SELECTOR, 'p[id="doubleClickMessage"]')
     SUCCESS_RIGHT = (By.CSS_SELECTOR, 'p[id="rightClickMessage"]')
@@ -85,3 +85,9 @@ class UploadAndDownloadPageLocators:
     UPLOADED_PATH = (By.CSS_SELECTOR, 'p[id="uploadedFilePath"]')
 
     DOWNLOAD_FILE = (By.CSS_SELECTOR, 'a[id="downloadButton"]')
+
+
+class DynamicPropertiesPageLocators():
+    COLOR_CHANGE_BUTTON = (By.CSS_SELECTOR, 'button[id="colorChange"]')
+    VISIBLE_AFTER_FIVE_SEC_BUTTON = (By.CSS_SELECTOR, 'button[id="visibleAfter"]')
+    ENABLE_BUTTON = (By.CSS_SELECTOR, 'button[id="enableAfter"]')
