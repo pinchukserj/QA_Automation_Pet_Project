@@ -74,3 +74,4 @@ class TestAlertsFrameWindows:
             title_large, body_large = modal_dialogs_page.check_large_dialog()
             assert title_large == "Large Modal", "Title of large modal is incorrect"
             assert len(body_large) == 574, "Text of large modal is incorrect"
+
