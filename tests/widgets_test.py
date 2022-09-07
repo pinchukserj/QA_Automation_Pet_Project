@@ -1,6 +1,6 @@
 import time
 
-from pages.widget_page import AccordianPage, AutoCompletePage
+from pages.widget_page import AccordianPage, AutoCompletePage, SliderPage, ProgressBarPage
 
 
 class TestWidgets:
@@ -36,3 +36,18 @@ class TestWidgets:
             color = auto_complete_page.fill_input_single()
             color_result = auto_complete_page.check_color_in_single()
             assert color == color_result, "the color has not been selected"
+
+    class TestSlider:
+        def test_slider(self, driver):
+            slider_page = SliderPage(driver, "https://demoqa.com/slider")
+            slider_page.open()
+            value_before, value_after = slider_page.change_slider_value()
+            assert value_before != value_after, "slider does not work"
+
+    class TestProgressBar:
+        def test_progress_bar(self, driver):
+            progress_bar_page = ProgressBarPage(driver, "https://demoqa.com/progress-bar")
+            progress_bar_page.open()
+            value_before, value_after = progress_bar_page.change_progress_bar_value()
+            assert value_before != value_after, "progress bar has not been changed"
+

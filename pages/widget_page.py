@@ -1,9 +1,11 @@
 import random
+import time
 
 from selenium.webdriver import Keys
 
 from generator.generator import generated_color
-from locators.widget_page_locators import AccordianPageLocators, AutoCompletePageLocators
+from locators.widget_page_locators import AccordianPageLocators, AutoCompletePageLocators, SliderPageLocators, \
+    ProgressBarPageLocators
 from pages.base_page import BasePage
 
 
@@ -54,7 +56,6 @@ class AutoCompletePage(BasePage):
             colors.append(color.text)
         return colors
 
-
     def fill_input_single(self):
         color = random.sample(next(generated_color()).color_name, k=1)
         input_single = self.element_is_clickable(self.locators.SINGLE_INPUT)
@@ -65,3 +66,28 @@ class AutoCompletePage(BasePage):
     def check_color_in_single(self):
         color = self.element_is_visible(self.locators.SINGLE_VALUE)
         return color.text
+
+
+class SliderPage(BasePage):
+    locators = SliderPageLocators()
+
+    def change_slider_value(self):
+        value_before = self.element_is_visible(self.locators.SLIDER_VALUE).get_attribute('value')
+        slider_input = self.element_is_visible(self.locators.SLIDER_INPUT)
+        self.action_drag_and_drop_by_offset(slider_input, random.randint(0, 100), 0)
+        value_after = self.element_is_visible(self.locators.SLIDER_VALUE).get_attribute('value')
+        return value_before, value_after
+
+class ProgressBarPage(BasePage):
+    locators = ProgressBarPageLocators()
+
+    def change_progress_bar_value(self):
+        value_before = self.element_is_present(self.locators.PROGRESS_BAR_VALUE).text
+        progress_bar_button = self.element_is_visible(self.locators.START_STOP_BUTTON)
+        progress_bar_button.click()
+        time.sleep(random.randint(2, 6))
+        progress_bar_button.click()
+
+        value_after = self.element_is_present(self.locators.PROGRESS_BAR_VALUE).text
+
+        return value_before, value_after
