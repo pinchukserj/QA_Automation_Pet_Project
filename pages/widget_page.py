@@ -5,7 +5,7 @@ from selenium.webdriver import Keys
 
 from generator.generator import generated_color
 from locators.widget_page_locators import AccordianPageLocators, AutoCompletePageLocators, SliderPageLocators, \
-    ProgressBarPageLocators, TabsPageLocators, ToolTipsPageLocators
+    ProgressBarPageLocators, TabsPageLocators, ToolTipsPageLocators, MenuPageLocators
 from pages.base_page import BasePage
 
 
@@ -129,4 +129,16 @@ class ToolTipsPage(BasePage):
         tooltip_text_contrary = self.get_text_from_tooltips(self.locators.CONTRARY_LINK, self.locators.CONTRARY_TOOLTIP)
         tooltip_text_section = self.get_text_from_tooltips(self.locators.SECTION_LINK, self.locators.SECTION_TOOLTIP)
         return tooltip_text_button, tooltip_text_input, tooltip_text_contrary, tooltip_text_section
+
+
+class MenuPage(BasePage):
+    locators = MenuPageLocators()
+
+    def check_menu(self):
+        menu_items_list = self.elements_are_present(self.locators.MENU_LIST)
+        data = []
+        for item in menu_items_list:
+            self.action_move_to_element(item)
+            data.append(item.text)
+        return data
 

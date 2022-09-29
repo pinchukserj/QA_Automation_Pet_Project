@@ -1,6 +1,7 @@
 import time
 
-from pages.widget_page import AccordianPage, AutoCompletePage, SliderPage, ProgressBarPage, TabsPage, ToolTipsPage
+from pages.widget_page import AccordianPage, AutoCompletePage, SliderPage, ProgressBarPage, TabsPage, ToolTipsPage, \
+    MenuPage
 
 
 class TestWidgets:
@@ -74,3 +75,12 @@ class TestWidgets:
             assert input_text == "You hovered over the text field", "tooltip was not showed up"
             assert contrary_text == "You hovered over the Contrary", "tooltip was not showed up"
             assert section_text == "You hovered over the 1.10.32", "tooltip was not showed up"
+
+
+    class TestMenu:
+        def test_menu(self, driver):
+            menu_page = MenuPage(driver, "https://demoqa.com/menu")
+            menu_page.open()
+            data = menu_page.check_menu()
+            title_list = ['Main Item 1', 'Main Item 2', 'Sub Item', 'Sub Item', 'SUB SUB LIST »', 'Sub Sub Item 1', 'Sub Sub Item 2', 'Main Item 3']
+            assert data == title_list, "menu is not exist or title is incorrect"
