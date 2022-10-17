@@ -1,4 +1,4 @@
-from pages.interactions_page import SortablePage, SelectablePage, DroppablePage
+from pages.interactions_page import SortablePage, SelectablePage, DroppablePage, DraggablePage
 
 
 class TestInteractions:
@@ -55,3 +55,13 @@ class TestInteractions:
             not_will_after_move, not_will_after_revert = droppable_page.will_revert_draggable('not_will')
             assert will_after_move != will_after_revert, "the element has not reverted"
             assert not_will_after_move == not_will_after_revert, "the element has reverted"
+
+
+    class TestDraggablePage:
+
+        def test_simple_drag(self, driver):
+            draggable_page = DraggablePage(driver, "https://demoqa.com/dragabble")
+            draggable_page.open()
+            before, after = draggable_page.simple_drag()
+            assert before != after, "the position has not been changed"
+
